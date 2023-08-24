@@ -1,16 +1,19 @@
 # SPAT
-Semantic-and-Naturalness Preserving Auto Transformation. This tool is a source-to-source transformation tool that can deal with partial code snippets (programs without dependency information). The transformed code will be semantic-equivalent to the original ones, as well as syntax-naturalness-preserving.
+A _modified_ version of the implemented tool Semantic-and-Naturalness Preserving Auto Transformation [[1]](#1) on https://github.com/Santiago-Yu/SPAT
 
-We have currently verified it on Windows10.
+"This tool is a source-to-source transformation tool that can deal with partial code snippets (programs without dependency information). The transformed code will be semantic-equivalent to the original ones, as well as syntax-naturalness-preserving."
 
-This project is developed in "Eclipse IDE for RCP and RAP Developers". If you want to play with the code, please use the same IDE. Starting with the "src/spat/RuleSelector.java" will bring you a nice view of the whole project.
 
-We have produced a runnable jar file already in "artifacts". 
+To use this tool, simply type the followed commands:
 
-To use this tool, simply type the followed command:
-
+1. Use Maven to build the project and create a distributable package (JAR file):
 ```consolo
-java -jar SPAT.jar [RuleId] [RootDir] [OutputDir] [PathofJre] \& [PathofotherDependentJar]
+mvn pacakge
+```
+
+2. Run the JAR file:
+```consolo
+java -jar target/SPAT-1.0.jar [RuleId] [RootDir] [OutputDir] [PathofJre] \& [PathofotherDependentJar]
 ```
 
 *[RuleId]* is the transformation rule you want to adopt. 
@@ -25,9 +28,9 @@ java -jar SPAT.jar [RuleId] [RootDir] [OutputDir] [PathofJre] \& [PathofotherDep
 
 For example, 
 ```consolo
-java -jar .\artifacts\SPAT.jar 5 .\Benchmarks\9133\Original .\Benchmarks\9133\transformed\_5 C:\Program Files\Java\jre1.8.0_221\lib\rt.jar
+java -jar target/SPAT-1.0.jar "2" "./RENE-Java-source-code" "./RENE-transformed/rule2" "/usr/local/opt/openjdk@8/libexec/openjdk.jdk/Contents/Home/jre/lib/rt.jar"
 ```
-This command will transform all java files under the ".\Benchmarks\9133\Original" path by the transformation rule 5 "ConditionalExp2SingleIF" to the path ".\Benchmarks\9133\\_5". The only dependency is the rt.jar (java runtime). 
+This command will transform all java files under the "./RENE-Java-source-code" path by the transformation rule 2 "While2For" to the path ".\Benchmarks\9133\\_5". The only dependency is the rt.jar (java runtime). 
 
 
 ## Supported Transformations
@@ -104,8 +107,9 @@ This dataset is used to train the Neural Probabilistic Language Model (see below
 	https://www.duckware.com/jobfuscate/index.html
 
 
-## Papers
-
-Shiwen Yu, Ting Wang, Ji Wang, "Data Augmentation by Program Transformation." Journal of Systems and Software (JSS 2022). (under JSS open science, the preprint pdf can be checked in ".\paper")
-
-Deze Wang, Zhouyang Jia, Shanshan Li, Yue Yu, Yun Xiong, Wei Dong, Xiangke Liao, “Bridging Pre-trained Models and Downstream Tasks for Source Code Understanding.” 44th International Conference on Software Engineering (ICSE 2022)
+## References
+<a id="1">[1]</a>
+S. Yu, T. Wang, and J. Wang, “Data augmentation by program
+transformation,” Journal of Systems and Software, vol. 190, p.
+111304, 2022. doi: https://doi.org/10.1016/j.jss.2022.111304. [Online].
+Available: https://www.sciencedirect.com/science/article/pii/S0164121222000541
