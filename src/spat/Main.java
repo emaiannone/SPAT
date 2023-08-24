@@ -117,6 +117,12 @@ public class Main {
         for (int i = 3; i < args.length; i++) {
             jre_rtPath.add(args[i]);
         }
+        long start = System.currentTimeMillis();
+
         ParseFilesInDir(rootDirToNaturalProg, outputDir, Utils.ArryStr2priStrList(jre_rtPath), ruleID);
+
+        long end = System.currentTimeMillis();
+        float sec = (end - start) / 1000F;
+        System.out.println(sec + " seconds");
     }
 }
