@@ -13,7 +13,7 @@ mvn pacakge
 
 2. Run the JAR file:
 ```consolo
-java -jar target/SPAT-1.0.jar [RuleId] [RootDir] [OutputDir] [PathofJre] \& [PathofotherDependentJar]
+java -jar target/SPAT-1.0.jar [Seed] [RuleId] [RootDir] [OutputDir] [PathofJre] \& [PathofotherDependentJar]
 ```
 
 *[RuleId]* is the transformation rule you want to adopt. 
