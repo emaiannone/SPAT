@@ -5,12 +5,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.Random;
-import java.util.Set;
+import java.util.*;
 
 import org.eclipse.jdt.core.ToolFactory;
 import org.eclipse.jdt.core.dom.ASTNode;
@@ -235,7 +230,7 @@ public class Utils {
     public static Set<IBinding> resolveAlluseddVarNames(ASTNode node) {
         //System.out.println(node.toString());
         class varNameRecording extends ASTVisitor {
-            public Set<IBinding> res = new HashSet<IBinding>();
+            public Set<IBinding> res = new LinkedHashSet<>();
 
             public boolean visit(SimpleName namer) {
                 //if(namer.isVar()) {

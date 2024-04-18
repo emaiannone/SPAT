@@ -1,10 +1,6 @@
 package spat.rules;
 
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 import org.eclipse.jdt.core.dom.AST;
 import org.eclipse.jdt.core.dom.ASTNode;
@@ -29,7 +25,7 @@ public class VarDeclarationMerging extends ASTVisitor{
 	String outputDirPath = null;
 	Map<VariableDeclarationStatement, VariableDeclarationStatement> VarDecscanSwitch = 
 			new HashMap<VariableDeclarationStatement, VariableDeclarationStatement>();
-	Set<VariableDeclarationStatement> involvedStatements = new HashSet<VariableDeclarationStatement>();
+	Set<VariableDeclarationStatement> involvedStatements = new LinkedHashSet<>();
 	AST ast = null;
 	ASTRewrite rewriter = null;
 	
@@ -69,7 +65,7 @@ public class VarDeclarationMerging extends ASTVisitor{
 
 
 	private Set<IBinding> namesInInitials(VariableDeclarationStatement decStatement){
-		 Set<IBinding> res = new HashSet<IBinding>();
+		 Set<IBinding> res = new LinkedHashSet<>();
 		 List<VariableDeclarationFragment> frags = decStatement.fragments();
 		 for(VariableDeclarationFragment frag : frags) {
 			 ASTNode tmp = frag.getInitializer();
@@ -81,7 +77,7 @@ public class VarDeclarationMerging extends ASTVisitor{
 		 return res;
 	}
 	private Set<IBinding> namesInvars(VariableDeclarationStatement decStatement) {
-		 Set<IBinding> res = new HashSet<IBinding>();
+		 Set<IBinding> res = new LinkedHashSet<>();
 		 List<VariableDeclarationFragment> frags = decStatement.fragments();
 		 for(VariableDeclarationFragment frag : frags) {
 			 res.add(frag.getName().resolveBinding());

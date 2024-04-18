@@ -1,10 +1,6 @@
 package spat.rules;
 
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 import org.eclipse.jdt.core.dom.AST;
 import org.eclipse.jdt.core.dom.ASTNode;
@@ -31,7 +27,7 @@ public class VarDeclarationDividing extends ASTVisitor{
 	CompilationUnit cu = null;
 	Document document = null;
 	String outputDirPath = null;
-	Set<VariableDeclarationStatement> involvedStatements = new HashSet<VariableDeclarationStatement>();
+	Set<VariableDeclarationStatement> involvedStatements = new LinkedHashSet<>();
 	AST ast = null;
 	ASTRewrite rewriter = null;
 	

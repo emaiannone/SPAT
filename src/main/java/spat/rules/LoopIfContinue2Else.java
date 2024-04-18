@@ -1,11 +1,6 @@
 package spat.rules;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 import org.eclipse.jdt.core.dom.AST;
 import org.eclipse.jdt.core.dom.ASTMatcher;
@@ -30,7 +25,7 @@ public class LoopIfContinue2Else extends ASTVisitor{
 	Document document = null;
 	String outputDirPath = null;
 	ArrayList<ContinueStatement> continues = new ArrayList<ContinueStatement>();
-	Set<Statement> involvedStatements = new HashSet<Statement>();
+	Set<Statement> involvedStatements = new LinkedHashSet<>();
 	AST ast = null;
 	ASTRewrite rewriter = null;
 	

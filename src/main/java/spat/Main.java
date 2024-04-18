@@ -73,29 +73,21 @@ public class Main {
         // If the Size if too big, we have to chop it into a small number.
         //Set<File> fileSet = Set.of(files);
         Set<File> fileSet = new LinkedHashSet<>(Arrays.asList(files));
-
-        ForkJoinPool myPool = new ForkJoinPool(32);
-        try {
-            myPool.submit(() ->
-                    fileSet.forEach(f -> {
-                        String filePath = f.getAbsolutePath();
-                        if (f.isFile()) {
-                            //System.out.println("Current File is: " + filePath);
-                            try {
-                                parse(Utils.readFileToString(filePath), dirPath, Utils.sublizeOutput(filePath, dirPath, outputdir), arrString, idOfRule);
-                            } catch (Exception e) {
-                                // TODO Auto-generated catch block
-                                System.out.println("trans failed:	" + filePath);
-                            } catch (Error s) {
-                                // TODO Auto-generated catch block
-                                System.out.println("trans failed:	" + s.toString());
-                            }
-                        }
-                    })).get();
-        } catch (InterruptedException | ExecutionException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
+        fileSet.forEach(f -> {
+            String filePath = f.getAbsolutePath();
+            if (f.isFile()) {
+                //System.out.println("Current File is: " + filePath);
+                try {
+                    parse(Utils.readFileToString(filePath), dirPath, Utils.sublizeOutput(filePath, dirPath, outputdir), arrString, idOfRule);
+                } catch (Exception e) {
+                    // TODO Auto-generated catch block
+                    System.out.println("trans failed:	" + filePath);
+                } catch (Error s) {
+                    // TODO Auto-generated catch block
+                    System.out.println("trans failed:	" + s.toString());
+                }
+            }
+        });
     }
 
     public static void main(String[] args) throws IOException {

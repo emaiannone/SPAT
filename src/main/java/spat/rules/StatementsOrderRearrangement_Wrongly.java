@@ -1,11 +1,6 @@
 package spat.rules;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 import org.eclipse.jdt.core.dom.AST;
 import org.eclipse.jdt.core.dom.ASTNode;
@@ -25,7 +20,7 @@ public class StatementsOrderRearrangement_Wrongly extends ASTVisitor{
 	Document document = null;
 	String outputDirPath = null;
 	Map<Statement, Statement > TheStatementscanSwitch = new HashMap<Statement, Statement >();
-	Set<Statement> involvedStatements = new HashSet<Statement>();
+	Set<Statement> involvedStatements = new LinkedHashSet<>();
 	AST ast = null;
 	ASTRewrite rewriter = null;
 	

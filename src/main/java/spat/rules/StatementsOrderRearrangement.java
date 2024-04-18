@@ -1,11 +1,6 @@
 package spat.rules;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 import org.eclipse.jdt.core.dom.AST;
 import org.eclipse.jdt.core.dom.ASTNode;
@@ -27,7 +22,7 @@ public class StatementsOrderRearrangement extends ASTVisitor{
 	Document document = null;
 	String outputDirPath = null;
 	Map<Statement, Statement > TheStatementscanSwitch = new HashMap<Statement, Statement >();
-	Set<Statement> involvedStatements = new HashSet<Statement>();
+	Set<Statement> involvedStatements = new LinkedHashSet<>();
 	AST ast = null;
 	ASTRewrite rewriter = null;
 	
@@ -74,7 +69,7 @@ public class StatementsOrderRearrangement extends ASTVisitor{
 	private boolean canSwitch(Statement presta, Statement aftersta) {
 		//Before anything, lets check the special statements
 		int ForbiddenStatements[] = {ASTNode.CONTINUE_STATEMENT, ASTNode.BREAK_STATEMENT, ASTNode.RETURN_STATEMENT};
-		Set<Integer> FSset = new HashSet<>();
+		Set<Integer> FSset = new LinkedHashSet<>();
 		for (int fs : ForbiddenStatements) {
 			FSset.add(fs);
 		}

@@ -2,6 +2,7 @@ package spat.rules;
 
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.Set;
 
 import org.eclipse.jdt.core.dom.AST;
@@ -28,7 +29,7 @@ public class InfixExpressionDividing extends ASTVisitor{
 	Document document = null;
 	String outputDirPath = null;
 	ArrayList<InfixExpression> theInfixExps = new ArrayList<InfixExpression>();
-	Set<Expression> ReplicationAvioding = new HashSet<Expression>();
+	Set<Expression> ReplicationAvioding = new LinkedHashSet<>();
 	
 	public InfixExpressionDividing(CompilationUnit cu_, Document document_, String outputDirPath_) {
 		this.cu = cu_;

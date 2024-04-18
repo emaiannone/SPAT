@@ -2,6 +2,7 @@ package spat.rules;
 
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.Set;
 
 import org.eclipse.jdt.core.dom.AST;
@@ -27,7 +28,7 @@ public class PrePostFixExpressionDividing extends ASTVisitor{
 	String outputDirPath = null;
 	ArrayList<PostfixExpression> thePostfixExps = new ArrayList<PostfixExpression>();
 	ArrayList<PrefixExpression> thePrefixExps = new ArrayList<PrefixExpression>();
-	Set<ExpressionStatement> ReplicationAvioding = new HashSet<ExpressionStatement>();
+	Set<ExpressionStatement> ReplicationAvioding = new LinkedHashSet<>();
 	AST ast = null;
 	ASTRewrite rewriter = null;
 	
