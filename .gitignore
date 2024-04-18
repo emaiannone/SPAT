@@ -1,2 +1,4 @@
 samplesForTest
 /src/n74.java
+*.class
+.idea
